@@ -1,6 +1,19 @@
+#include <stdint.h>
 #include QMK_KEYBOARD_H
 #include "keycodes.h"
 
+// Define combos
+enum combos {
+    JK_ESC
+};
+
+const uint16_t PROGMEM escape_combo[] = {KC_J, KC_K, COMBO_END};
+combo_t key_combos[] = {
+    COMBO(escape_combo, KC_ESC),
+};
+
+
+// Define the keymap
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_split_3x5_2(
                 KC_Q,         KC_W,         KC_E,        KC_R, KC_T,                     KC_Y, KC_U, KC_I, KC_O, KC_P,
@@ -33,13 +46,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX
     ),
     [_BOOTLOADER]    = LAYOUT_split_3x5_2(
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                                XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX
     )
 };
-    // [_SPARE]    = LAYOUT_split_3x5_2(
-    //     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    //     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    //     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    //                                            XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX
