@@ -2,7 +2,7 @@
 #include QMK_KEYBOARD_H
 
 enum layers {
-    _BASE,
+    _QWERTY,
     _NUMBERS,
     _MODS,
     _FUNC,
