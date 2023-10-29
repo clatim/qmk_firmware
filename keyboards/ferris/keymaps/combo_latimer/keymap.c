@@ -3,6 +3,30 @@
 #include "keycodes.h"
 #include "g/keymap_combo.h"
 
+// Declare tap dance keys
+
+enum {
+    TD_BRACKET,
+    TD_CURLY,
+    TD_SQUARE,
+    TD_ANGLE,
+    TD_SLASH,
+    TD_QUOTE,
+    TD_BAR
+};
+
+tap_dance_action_t tap_dance_actions[] = {
+    [TD_BRACKET] = ACTION_TAP_DANCE_DOUBLE(KC_LPRN, KC_RPRN),
+    [TD_CURLY] = ACTION_TAP_DANCE_DOUBLE(KC_LCBR, KC_RCBR),
+    [TD_SQUARE] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_RBRC),
+    [TD_ANGLE] = ACTION_TAP_DANCE_DOUBLE(KC_LT, KC_GT),
+    [TD_SLASH] = ACTION_TAP_DANCE_DOUBLE(KC_SLASH, KC_NUBS),
+    [TD_QUOTE] = ACTION_TAP_DANCE_DOUBLE(KC_QUOTE, KC_AT),
+    [TD_BAR] = ACTION_TAP_DANCE_DOUBLE(KC_UNDS, LSFT(KC_NUBS)),
+
+};
+
+
 // Define the keymap
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_split_3x5_2(
@@ -12,16 +36,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                          OSL(_MODS), KC_LSFT,                 KC_SPC, MO(_NUMBERS)
     ),
     [_NUMBERS]    = LAYOUT_split_3x5_2(
-        MO(_FUNC), UK_AT, XXXXXXX, XXXXXXX, XXXXXXX,                KC_ASTR, KC_7, KC_8, KC_9, KC_PLUS,
-        KC_LT, KC_SLASH, KC_LCBR, KC_LPRN, KC_LBRC,                KC_SLASH, KC_4, KC_5, KC_6, KC_MINUS,
-        KC_GT, KC_NUBS, KC_RCBR, KC_RPRN, KC_RBRC,                KC_0, KC_1, KC_2, KC_3, KC_EQL,
+        KC_CIRC,      UK_AT,        KC_GRAVE,     TD(TD_QUOTE),   MO(_FUNC),                    KC_EQL,  KC_7, KC_8, KC_9, KC_PLUS,
+        TD(TD_ANGLE), TD(TD_SLASH), TD(TD_CURLY), TD(TD_BRACKET), TD(TD_SQUARE),                KC_ASTR, KC_4, KC_5, KC_6, KC_MINUS,
+        XXXXXXX, XXXXXXX, KC_NUHS, TD(TD_BAR), XXXXXXX,                                            KC_0,    KC_1, KC_2, KC_3, XXXXXXX,
                                     OSL(_SYM), KC_LSFT,                   MO(_BOOTLOADER), XXXXXXX
     ),
+
     [_MODS]    = LAYOUT_split_3x5_2(
         KC_ESC, XXXXXXX, XXXXXXX, LCTL(KC_A), XXXXXXX,                KC_PGUP, KC_HOME, KC_UP, KC_END, KC_INS,
         OSM(MOD_LALT), OSM(MOD_LGUI), OSM(MOD_LSFT), OSM(MOD_LCTL), XXXXXXX,                KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, KC_PSCR,
         LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), KC_LCMD,                KC_DELETE, KC_BACKSPACE, KC_TAB, KC_APP, XXXXXXX,
-                                               XXXXXXX, MO(_BOOTLOADER),        KC_ENTER, OSL(_FUNC)
+                                               XXXXXXX, MO(_BOOTLOADER),        KC_ENTER, XXXXXXX
     ),
     [_FUNC]    = LAYOUT_split_3x5_2(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                KC_F12, KC_F7, KC_F8, KC_F9, XXXXXXX,
@@ -30,10 +55,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX
     ),
     [_SYM]    = LAYOUT_split_3x5_2(
-        KC_CIRC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                KC_WH_U, KC_BTN1, KC_MS_U, KC_BTN2, XXXXXXX,
-        KC_BSLS, KC_TILD, KC_AMPR, KC_UNDS, KC_AT,                KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX,
-        KC_GRAVE, XXXXXXX, KC_HASH, KC_PIPE, KC_QUOTE,                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                KC_WH_U, KC_BTN1, KC_MS_U, KC_BTN2, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                                XXXXXXX, XXXXXXX,        XXXXXXX, XXXXXXX
+
     ),
     [_BOOTLOADER]    = LAYOUT_split_3x5_2(
         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QK_BOOTLOADER,                QK_BOOTLOADER, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
