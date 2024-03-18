@@ -4,5 +4,5 @@ COMBO_ENABLE=yes
 # Enable using the combo dictionary (see https://docs.qmk.fm/#/feature_combo)
 VPATH += keyboards/gboards
 TAP_DANCE_ENABLE=yes
-AUTO_SHIFT_ENABLE=yes
-REPEAT_KEY_ENABLE=yes
+AUTO_SHIFT_ENABLE=no
+REPEAT_KEY_ENABLE=no
