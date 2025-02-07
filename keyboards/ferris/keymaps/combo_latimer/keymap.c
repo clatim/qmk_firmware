@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_MODS]    = LAYOUT_split_3x5_2(
         KC_ESC, XXXXXXX, XXXXXXX, LCTL(KC_A), XXXXXXX,                KC_PGUP, KC_HOME, KC_UP, KC_END, KC_INS,
         OSM(MOD_LALT), OSM(MOD_LGUI), OSM(MOD_LSFT), OSM(MOD_LCTL), XXXXXXX,                KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, KC_PSCR,
-        LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), KC_LCMD,                KC_DELETE, KC_BACKSPACE, KC_TAB, KC_APP, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LCMD,                KC_DELETE, KC_BACKSPACE, KC_TAB, KC_APP, XXXXXXX,
                                                XXXXXXX, MO(_BOOTLOADER),        KC_ENTER, XXXXXXX
     ),
     [_FUNC]    = LAYOUT_split_3x5_2(

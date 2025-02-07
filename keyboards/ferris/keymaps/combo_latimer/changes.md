@@ -1,5 +1,10 @@
 # Changelog
 
+## 2024-09-30
+
+### Removed
+- Removed ctrl+[ZXCV] as there is ctrl under the right thumb (see holding KC_SPACE)
+
 ## 2024-04-18
 
 ### Added
